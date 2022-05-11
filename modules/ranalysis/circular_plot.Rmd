@@ -1,0 +1,36 @@
+param:
+	reports = NULL
+	grepped = NULL
+
+
+
+
+# reports = c("path/file1", "path/file2", "path/file3")
+# grepped = c("path/grep1", "path/grep2", "path/grep3")
+
+
+data = tibble()
+
+for file in reports
+	tmp = read_tsv(file, header=TRUE)
+	data = rbind(
+		data,
+		cbind(
+			tmp,
+			sample = file
+		)
+	)
+
+
+
+g_data = tibble()
+
+for file in grepped
+	tmp = read_tsv(file, header=TRUE)
+	g_data = rbind(
+		g_data,
+		cbind(
+			tmp,
+			sample = file
+		)
+	)
