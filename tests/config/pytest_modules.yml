@@ -1106,6 +1106,10 @@ lissero:
   - modules/lissero/**
   - tests/modules/lissero/**
 
+local/parseoutputs:
+  - modules/local/parseoutputs/**
+  - tests/modules/local/parseoutputs/**
+
 lofreq/call:
   - modules/lofreq/call/**
   - tests/modules/lofreq/call/**

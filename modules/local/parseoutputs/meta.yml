@@ -1,0 +1,61 @@
+name: "local_parseoutputs"
+## TODO nf-core: Add a description of the module and list keywords
+description: write your description here
+keywords:
+  - sort
+tools:
+  - samtools:
+      description: |
+        SAMtools is a set of utilities for interacting with and post-processing
+        short DNA sequence read alignments in the SAM, BAM and CRAM formats, written by Heng Li.
+        These files are generated as output by short read aligners like BWA.
+      homepage: http://www.htslib.org/
+      documentation: hhttp://www.htslib.org/doc/samtools.html
+      doi: 10.1093/bioinformatics/btp352
+      licence: ["MIT"]
+  - awk:
+      description: |
+        AWK is a domain-specific language designed for text processing and
+        typically used as a data extraction and reporting tool.
+        Like sed and grep, it is a filter, and is a standard feature of most Unix-like operating systems.
+      homepage: https://en.wikipedia.org/wiki/AWK
+      documentation:
+      doi:
+      licence:
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  #
+  ## TODO nf-core: Delete / customise this example input
+  - bam:
+      type: file
+      description: BAM/CRAM/SAM file
+      pattern: "*.{bam,cram,sam}"
+
+## TODO nf-core: Add a description of all of the variables used as output
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. [ id:'test', single_end:false ]
+  #
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  ## TODO nf-core: Delete / customise this example output
+  - bam:
+      type: file
+      description: Sorted BAM/CRAM/SAM file
+      pattern: "*.{bam,cram,sam}"
+
+authors:
+  - "@carpanz"
