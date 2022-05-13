@@ -8,7 +8,7 @@ workflow test_local_parseoutputs {
 
     input = [
         [ id:'test', single_end:false ], // meta map
-        file("/Users/simonecarpanzano/Desktop/bioinformatica/test_nfcore/SRR17085829_singleUnmapped.bam", checkIfExists: true)
+        file("/home/shared_projects/tesi_simone_carpanzano/file_plot/SRR17085829_singleUnmapped.bam", checkIfExists: true)
     ]
 
     PARSEOUTPUTS ( input )
