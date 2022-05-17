@@ -9,5 +9,7 @@ workflow test_local_parseoutputs {
         file("/Users/simonecarpanzano/Desktop/bioinformatica/test_nfcore/SRR17085829_singleUnmapped.bam", checkIfExists: true)
     ]
 
-    PARSEOUTPUTS ( input )
+    kraken_results = file("/Users/simonecarpanzano/Desktop/bioinformatica/test_nfcore/SRR17085829_singleUnmapped_classified.txt", checkIfExists: true)
+
+    PARSEOUTPUTS ( input , kraken_results )
 }

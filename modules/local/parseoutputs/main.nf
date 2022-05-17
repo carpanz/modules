@@ -9,7 +9,7 @@ process PARSEOUTPUTS {
 
     input:
     tuple val(meta), path(bam)
-    tuple val(meta), path(kraken_results)
+    path kraken_results
 
     output:
     tuple val(meta), path("*_parsed_kraken.txt"), emit: kraken_parsed
@@ -30,7 +30,7 @@ process PARSEOUTPUTS {
         -T $prefix \\
         $bam | cut -f 1,3,8 > ${prefix}_parsed_integration_sites.txt
 
-    awk -vOFS='\t' 'match($0, /\(taxid (.+)\)/, a) {print $2, a[1]}' $kraken_results > ${prefix}_parsed_kraken.txt
+    awk -vOFS='\t' 'match(\$0, /\\(taxid (.+)\)/, a) {print \$2, a[1]}' $kraken_results > ${prefix}_parsed_kraken.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

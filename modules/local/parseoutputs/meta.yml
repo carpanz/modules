@@ -23,39 +23,39 @@ tools:
       doi:
       licence:
 
-## TODO nf-core: Add a description of all of the variables used as input
 input:
-  # Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
-  #
-  ## TODO nf-core: Delete / customise this example input
   - bam:
       type: file
-      description: BAM/CRAM/SAM file
+      description: BAM file
       pattern: "*.{bam,cram,sam}"
+  - kraken_results:
+      type: file
+      description: file from Kraken2 classification
+      pattern: "*.{txt}"
 
-## TODO nf-core: Add a description of all of the variables used as output
 output:
-  #Only when we have meta
   - meta:
       type: map
       description: |
         Groovy Map containing sample information
         e.g. [ id:'test', single_end:false ]
-  #
   - versions:
       type: file
       description: File containing software versions
       pattern: "versions.yml"
-  ## TODO nf-core: Delete / customise this example output
-  - bam:
+  - parsed_kraken:
       type: file
-      description: Sorted BAM/CRAM/SAM file
-      pattern: "*.{bam,cram,sam}"
+      description: parsed kraken file
+      pattern: "*.{txt}"
+  - parsed_integration_sites:
+      type: file
+      description: parsed bam file
+      pattern: "*.{txt}"
 
 authors:
   - "@carpanz"
