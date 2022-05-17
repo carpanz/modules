@@ -6,10 +6,10 @@ workflow test_local_parseoutputs {
 
     input = [
         [ id:'test', single_end:false ], // meta map
-        file("/Users/simonecarpanzano/Desktop/bioinformatica/test_nfcore/SRR17085829_singleUnmapped.bam", checkIfExists: true)
+        file("/home/shared_projects/tesi_simone_carpanzano/file_plot/test_nfcore/SRR17085829_singleUnmapped.bam", checkIfExists: true)
     ]
 
-    kraken_results = file("/Users/simonecarpanzano/Desktop/bioinformatica/test_nfcore/SRR17085829_singleUnmapped_classified.txt", checkIfExists: true)
+    kraken_results = file("/home/shared_projects/tesi_simone_carpanzano/file_plot/test_nfcore/SRR17085829_singleUnmapped_classified.txt", checkIfExists: true)
 
     PARSEOUTPUTS ( input , kraken_results )
 }
