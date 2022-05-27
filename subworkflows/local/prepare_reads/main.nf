@@ -10,8 +10,8 @@
 include { BWAMEM2_INDEX                } from '../../../modules/bwamem2/index/main.nf'
 include { BWAMEM2_MEM                  } from '../../../modules/bwamem2/mem/main'
 include { BWA_INDEX   as BWAMEM1_INDEX } from '../../../modules/bwa/index/main.nf'
-include { BWA_MEM     as BWAMEM1_MEM   } from '../../../modules/bwa/mem/main'
-include { TRIMGALORE                   } from '../../../modules/trimgalore/main'
+include { BWA_MEM     as BWAMEM1_MEM   } from '../../../modules/bwa/mem/main.nf'
+include { TRIMGALORE                   } from '../../../modules/trimgalore/main.nf'
 
 
 workflow PREPARE_READS {
