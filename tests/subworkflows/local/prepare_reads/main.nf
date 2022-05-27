@@ -2,9 +2,9 @@
 
 nextflow.enable.dsl = 2
 
-include { PREPARE_READS } from '../../../../subworkflows/local/reads_preprocess/main'
+include { PREPARE_READS } from '../../../../subworkflows/local/prepare_reads/main.nf'
 
-workflow test_reads_preprocess_mem1 {
+workflow test_prepare_reads_mem1 {
     reads = [
         [ id:'test', single_end:false ], // meta map
         [
@@ -17,7 +17,7 @@ workflow test_reads_preprocess_mem1 {
     PREPARE_READS ( reads, fasta, "bwa-mem" )
 }
 
-workflow test_reads_preprocess_mem2 {
+workflow test_prepare_reads_mem2 {
     reads = [
         [ id:'test', single_end:false ], // meta map
         [
