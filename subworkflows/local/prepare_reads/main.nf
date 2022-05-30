@@ -26,9 +26,6 @@ workflow PREPARE_READS {
     ch_versions = Channel.empty()
     aligned_bam = Channel.empty()
 
-    Channel.from(reads)
-    .dump(tag: 'test_reads')
-
     TRIMGALORE ( reads )
     ch_versions = ch_versions.mix(TRIMGALORE.out.versions)
 

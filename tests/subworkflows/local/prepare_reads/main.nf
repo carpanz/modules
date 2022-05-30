@@ -16,8 +16,8 @@ workflow test_prepare_reads_mem1 {
     reads = [
         [ id:'test', single_end:false ], // meta map
         [
-            file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
-            file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true)
+            file(params.test_data['homo_sapiens']['illumina']['test_umi_1_fastq_gz'], checkIfExists: true),
+            file(params.test_data['homo_sapiens']['illumina']['test_umi_2_fastq_gz'], checkIfExists: true)
         ]
     ]
     fasta = file(params.test_data['homo_sapiens']['genome']['genome_21_fasta'],            checkIfExists: true)
@@ -29,8 +29,8 @@ workflow test_prepare_reads_mem2 {
     reads = [
         [ id:'test', single_end:false ], // meta map
         [
-            file(params.test_data['homo_sapiens']['illumina']['test_1_fastq_gz'], checkIfExists: true),
-            file(params.test_data['homo_sapiens']['illumina']['test_2_fastq_gz'], checkIfExists: true)
+            file(params.test_data['homo_sapiens']['illumina']['test_umi_1_fastq_gz'], checkIfExists: true),
+            file(params.test_data['homo_sapiens']['illumina']['test_umi_2_fastq_gz'], checkIfExists: true)
         ]
     ]
     fasta = file(params.test_data['homo_sapiens']['genome']['genome_21_fasta'],            checkIfExists: true)
