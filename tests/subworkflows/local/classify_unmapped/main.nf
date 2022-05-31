@@ -2,7 +2,7 @@
 
 nextflow.enable.dsl = 2
 
-incude { CLASSIFY_UNMAPPED } from '../../../../subworkflows/local/classify_unmapped/main.nf'
+include { CLASSIFY_UNMAPPED } from '../../../../subworkflows/local/classify_unmapped/main.nf'
 
 workflow test_classify_unmapped {
 
