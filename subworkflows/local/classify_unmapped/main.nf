@@ -1,5 +1,3 @@
-//
-//
 
 include { SAMTOOLS_VIEW   as SAMTOOLS_VIEW_SINGLE     } from '../../../modules/samtools/view/main.nf'
 include { SAMTOOLS_VIEW   as SAMTOOLS_VIEW_BOTH       } from '../../../modules/samtools/view/main.nf'
