@@ -3,7 +3,6 @@
 // and performs QC of both reads and resulting bam files
 
 
-
 // modules to include in this subworkflow
 
 
