@@ -4,7 +4,7 @@ incude { CLASSIFY_UNMAPPED } from '../../../../subworkflows/local/classify_unmap
 workflow test_classify_unmapped {
 
     bam = [ [ id:'test', single_end:false ], // meta map
-                file("path/to/test.bam", checkIfExists: true)
+                file("/home/shared_projects/tesi_simone_carpanzano/output_test_prepare_reads/bwamem1/test.bam", checkIfExists: true)
             ]
 
     CLASSIFY_UNMAPPED ( bam )

@@ -45,5 +45,4 @@ workflow CLASSIFY_UNMAPPED {
     candidate_integrations   = PARSEOUTPUTS.out
     versions                 = ch_versions            // channel: [ versions.yml ]
 
-
 }
