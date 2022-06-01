@@ -6,9 +6,9 @@ include { CLASSIFY_UNMAPPED } from '../../../../subworkflows/local/classify_unma
 
 workflow test_classify_unmapped {
 
-    input = [ [ id:'test', single_end:false ], // meta map
+    input = Channel.from([ [ id:'test', single_end:false ], // meta map
                 file("/home/shared_projects/tesi_simone_carpanzano/output_test_prepare_reads/bwamem1/test.bam", checkIfExists: true)
-            ]
+            ])
     db = Channel.fromPath("/home/shared_projects/REFS/kraken_db")
 
     CLASSIFY_UNMAPPED ( input, db )
