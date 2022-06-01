@@ -10,7 +10,8 @@ include { PARSEOUTPUTS                                } from '../../../modules/l
 workflow CLASSIFY_UNMAPPED {
 
     take:
-    bam   // channel: [ val(meta), [ bam ] ]
+    bam  // channel: [ val(meta), [ bam ] ]
+    db   // channel: [ path(database) ]
 
     main:
 
@@ -31,10 +32,10 @@ workflow CLASSIFY_UNMAPPED {
     SAMTOOLS_FASTQ_BOTH ( SAMTOOLS_VIEW_BOTH.out.bam )
     ch_versions = ch_versions.mix(SAMTOOLS_FASTQ_BOTH.out.versions)
 
-    KRAKEN2_SINGLE ( SAMTOOLS_FASTQ_SINGLE.out.fastq )
+    KRAKEN2_SINGLE ( SAMTOOLS_FASTQ_SINGLE.out.fastq, db, false, true )
     ch_versions = ch_versions.mix(KRAKEN2_SINGLE.out.versions)
 
-    KRAKEN2_BOTH ( SAMTOOLS_FASTQ_BOTH.out.fastq )
+    KRAKEN2_BOTH ( SAMTOOLS_FASTQ_BOTH.out.fastq, db, false, true )
     ch_versions = ch_versions.mix(KRAKEN2_BOTH.out.versions)
 
     emit:
