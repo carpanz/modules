@@ -9,7 +9,7 @@ workflow test_classify_unmapped {
     input = [ [ id:'test', single_end:false ], // meta map
                 file("/home/shared_projects/tesi_simone_carpanzano/output_test_prepare_reads/bwamem1/test.bam", checkIfExists: true)
             ]
-
-    CLASSIFY_UNMAPPED ( input )
+    db = path("/home/shared_projects/REFS/kraken_db")
+    CLASSIFY_UNMAPPED ( input, db )
 
 }
