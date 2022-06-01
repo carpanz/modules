@@ -1,4 +1,5 @@
 
+include { SAMTOOLS_INDEX                              } from '../../../modules/samtools/index/main.nf'
 include { SAMTOOLS_VIEW   as SAMTOOLS_VIEW_SINGLE     } from '../../../modules/samtools/view/main.nf'
 include { SAMTOOLS_VIEW   as SAMTOOLS_VIEW_BOTH       } from '../../../modules/samtools/view/main.nf'
 include { SAMTOOLS_FASTQ  as SAMTOOLS_FASTQ_SINGLE    } from '../../../modules/samtools/fastq/main.nf'
@@ -17,10 +18,14 @@ workflow CLASSIFY_UNMAPPED {
 
     ch_versions = Channel.empty()
 
-    SAMTOOLS_VIEW_SINGLE ( bam, [] )
+    SAMTOOLS_INDEX ( bam )
+    ch_versions = ch_versions.mix(SAMTOOLS_INDEX.out.versions)
+    ch_indexed_bam = bam.join(SAMTOOLS_INDEX.out.bai)
+
+    SAMTOOLS_VIEW_SINGLE ( ch_indexed_bam, [] )
     ch_versions = ch_versions.mix(SAMTOOLS_VIEW_SINGLE.out.versions)
 
-    SAMTOOLS_VIEW_BOTH ( bam, [] )
+    SAMTOOLS_VIEW_BOTH ( ch_indexed_bam, [] )
     ch_versions = ch_versions.mix(SAMTOOLS_VIEW_BOTH.out.versions)
 
     PARSEOUTPUTS ( SAMTOOLS_VIEW_SINGLE.out.bam )
