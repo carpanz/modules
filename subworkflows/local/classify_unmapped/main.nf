@@ -40,7 +40,7 @@ workflow CLASSIFY_UNMAPPED {
     emit:
     classified_single        = KRAKEN2_SINGLE.out.classified_reads_assignment
     classified_both          = KRAKEN2_BOTH.out.classified_reads_assignment
-    candidate_integrations   = PARSEOUTPUTS.out
+    candidate_integrations   = PARSEOUTPUTS.out.integration_sites
     versions                 = ch_versions            // channel: [ versions.yml ]
 
 }
