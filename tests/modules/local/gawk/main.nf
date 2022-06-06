@@ -2,9 +2,9 @@
 
 nextflow.enable.dsl = 2
 
-include { CAT } from '../../../../modules/local/cat/main.nf'
+include { GAWK } from '../../../../modules/local/gawk/main.nf'
 
-workflow test_local_cat {
+workflow test_local_gawk {
 
     input = Channel.from([
         [id: "test1", single_end: false],
@@ -18,5 +18,5 @@ workflow test_local_cat {
 
     kraken_results = input.collect{it[1]} // [meta, counts]: Collect the second element (classified reads) in the channel across all samples
 
-    CAT ( kraken_results )
+    GAWK ( kraken_results )
 }

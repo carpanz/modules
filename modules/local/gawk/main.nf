@@ -1,5 +1,5 @@
 
-process CAT {
+process GAWK {
     tag 'collate kraken'
     label 'process_low'
 
@@ -21,7 +21,7 @@ process CAT {
     script:
     def args = task.ext.args ?: ''
     """
-    cat $classified_reads >kraken_classified_reads_collated.txt
+    cat $classified_reads | gawk '$1 != U && $3 != 1 && $3 != 0 {print $0}' >kraken_classified_reads_collated.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
