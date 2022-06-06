@@ -6,9 +6,14 @@ include { CLASSIFY_UNMAPPED } from '../../../../subworkflows/local/classify_unma
 
 workflow test_classify_unmapped {
 
-    input = Channel.value([ [ id:'test', single_end:false ], // meta map
-                file("/home/shared_projects/tesi_simone_carpanzano/output_test_prepare_reads/bwamem1/test.bam", checkIfExists: true)
-            ])
+    input = Channel.from(
+            [ [ id:'SRR13106578', single_end:false ], // meta map
+                file("/home/shared_projects/tesi_simone_carpanzano/fastqFile/analysis/bwamem1/SRR13106578.bam", checkIfExists: true)
+            ],
+            [ [ id:'SRR13106582', single_end:false ], // meta map
+                file("/home/shared_projects/tesi_simone_carpanzano/fastqFile/analysis/bwamem1/SRR13106582.bam", checkIfExists: true)
+            ]
+            )
     db = Channel.fromPath("/home/shared_projects/tesi_simone_carpanzano/kraken_db_test/kraken2")
 
     CLASSIFY_UNMAPPED ( input, db )
