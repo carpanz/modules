@@ -1178,6 +1178,10 @@ lissero:
   - modules/lissero/**
   - tests/modules/lissero/**
 
+local/cat:
+  - modules/local/cat/**
+  - tests/modules/local/cat/**
+
 lofreq/call:
   - modules/lofreq/call/**
   - tests/modules/lofreq/call/**
