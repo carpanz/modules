@@ -14,7 +14,7 @@ workflow test_classify_unmapped {
                 file("/home/shared_projects/tesi_simone_carpanzano/fastqFile/analysis/bwamem1/SRR13106582.bam", checkIfExists: true)
             ]
             )
-    db = Channel.fromPath("/home/shared_projects/REFS/kraken_db")
+    db = Channel.value(file("/home/shared_projects/REFS/kraken_db"))
 
     CLASSIFY_UNMAPPED ( input, db )
 
